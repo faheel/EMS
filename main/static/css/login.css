@@ -1,0 +1,18 @@
+.mdl-layout {
+	align-items: center;
+}
+.mdl-layout__content {
+	flex: none;
+    margin: auto;
+    max-width: 100%;
+}
+.login-avatar {
+    text-align: center;
+}
+.login-avatar .material-icons {
+    font-size: 80px;
+    margin: auto;
+}
+.mdl-textfield__input {
+    color: #455A64;
+}

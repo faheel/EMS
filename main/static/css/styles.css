@@ -1,6 +1,13 @@
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
+::selection {
+    background: rgba(103, 58, 183, 0.25);
+}
+::-moz-selection {
+    background: rgba(103, 58, 183, 0.25);
+}
+
 .avatar {
   width: 48px;
   height: 48px;
@@ -79,16 +86,18 @@ html, body {
           flex-grow: 1;
 }
 .layout .navigation .mdl-navigation__link {
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-weight: 500;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    align-items: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    font-size: 16px;
+    padding: 16px 32px;
+    transition: background-color 0.2s ease-in-out;
 }
 .layout .navigation .mdl-navigation__link:hover {
   background-color: #455A64;
@@ -100,6 +109,9 @@ html, body {
 
 .content {
   max-width: 1080px;
+}
+p {
+    font-size: 16px;
 }
 
 .cards {

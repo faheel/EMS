@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Examination Management System login">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+        <title>Login - EMS</title>
+
+        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="{% static 'images/android-desktop.png' %}">
+
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+        <link rel="apple-touch-icon-precomposed" href="{% static 'images/ios-desktop.png' %}">
+
+        <!-- Tile icon for Win8 (120x120 + tile color) -->
+        <meta name="msapplication-TileImage" content="images/ios-desktop.png">
+        <meta name="msapplication-TileColor" content="#263238">
+
+        <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+
+        <!-- Fonts, icons and styles -->
+        <link rel="stylesheet" href="{% static 'fonts/material-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'css/material.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    </head>
+
+    <body>
+        <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
+        <!-- Page header -->
+            <header class="header mdl-layout__header mdl-color--blue-grey-100 mdl-color-text--blue-grey-900">
+                <div class="mdl-layout__header-row">
+                    <div class="mdl-layout-spacer"></div>
+                    <button class="mdl-button mdl-js-button mdl-js--ripple-effect" onclick="window.history.back();">
+                        Cancel
+                    </button>
+                </div>
+            </header>
+        <!-- /Page header -->
+
+        <!-- Page content -->
+            <main class="mdl-layout__content">
+                <div class="mdl-grid content">
+                    <div class="mdl-cell mdl-cell--12-col mdl-grid">
+                        <div class="mdl-card mdl-shadow--6dp">
+                			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                				<h2 class="mdl-card__title-text">Login</h2>
+                			</div>
+                	  	    <div class="mdl-card__supporting-text">
+                                <div class="login-avatar">
+                                    <i class="material-icons mdl-color-text--blue-grey-300">account_circle</i>
+                                </div>
+                				<form action="#">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                						<input class="mdl-textfield__input" type="text" id="username">
+                						<label class="mdl-textfield__label" for="username">Username</label>
+                					</div>
+                					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                						<input class="mdl-textfield__input" type="password" id="password">
+                						<label class="mdl-textfield__label" for="password">Password</label>
+                					</div>
+                				</form>
+                			</div>
+                			<div class="mdl-card__actions mdl-card--border">
+                				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Log in</button>
+                			</div>
+                		</div>
+                    </div>
+                </div>
+            </main>
+        <!-- /Page content -->
+        </div>
+
+    <!-- Scripts -->
+        <script src="{% static 'js/material.min.js' %}"></script>
+    <!-- /Scripts -->
+    </body>
+</html>

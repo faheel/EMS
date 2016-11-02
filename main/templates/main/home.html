@@ -26,7 +26,6 @@
         <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
 
         <!-- Fonts, icons and styles -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
         <link rel="stylesheet" href="{% static 'fonts/material-icons.css' %}">
         <link rel="stylesheet" href="{% static 'css/material.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -35,7 +34,7 @@
     <body>
         <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
         <!-- Page header -->
-            <header class="header mdl-layout__header mdl-color--blue-grey-50 mdl-color-text--blue-grey-800">
+            <header class="header mdl-layout__header mdl-color--blue-grey-100 mdl-color-text--blue-grey-900">
                 <div class="mdl-layout__header-row">
                 <!-- Page title -->
                     <span class="mdl-layout-title">EMS</span>
@@ -54,16 +53,6 @@
                         </div>
                     </div>
                 <!-- /Search bar -->
-
-                <!-- Options -->
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-                        <i class="material-icons">more_vert</i>
-                    </button>
-                    <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                        <li class="mdl-menu__item">About</li>
-                        <li class="mdl-menu__item">Contact</li>
-                    </ul>
-                <!-- /Options -->
                 </div>
             </header>
         <!-- /Page header -->
@@ -90,10 +79,6 @@
                         </button>
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
                             <li class="mdl-menu__item">
-                                <i class="material-icons">info</i>
-                                Account details
-                            </li>
-                            <li class="mdl-menu__item">
                                 <i class="material-icons">reply</i>
                                 Sign out
                             </li>
@@ -107,40 +92,28 @@
             <!-- Drawer navigation -->
                 <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
-                        <i class="mdl-color-text--accent material-icons" role="presentation">home</i>
-                        Home
+                        <i class="mdl-color-text--accent material-icons" role="presentation">people</i>
+                        Details
                     </a>
 
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
-                        <i class="mdl-color-text--accent material-icons" role="presentation">inbox</i>
-                        Option A
+                        <i class="mdl-color-text--accent material-icons" role="presentation">assignment_turned_in</i>
+                        Attendance
                     </a>
 
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
-                        <i class="mdl-color-text--accent material-icons" role="presentation">delete</i>
-                        Option B
+                        <i class="mdl-color-text--accent material-icons" role="presentation">equalizer</i>
+                        Result
                     </a>
 
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
-                        <i class="mdl-color-text--accent material-icons" role="presentation">forum</i>
-                        Option C
+                        <i class="mdl-color-text--accent material-icons" role="presentation">date_range</i>
+                        Schedule
                     </a>
 
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
-                        <i class="mdl-color-text--accent material-icons" role="presentation">flag</i>
-                        Option D
-                    </a>
-
-                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
-                        <i class="mdl-color-text--accent material-icons" role="presentation">settings</i>
-                        Settings
-                    </a>
-
-                    <div class="mdl-layout-spacer"></div>
-
-                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
-                        <i class="mdl-color-text--accent material-icons" role="presentation">help_outline</i>
-                        Help
+                        <i class="mdl-color-text--accent material-icons" role="presentation">comment</i>
+                        Notifications
                     </a>
                 </nav>
             <!-- /Drawer navigation -->
@@ -151,41 +124,7 @@
             <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid content">
                     <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                        <h4>It's working!</h4>
-                        <p>
-                            Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
-                        </p>
-                        <p>
-                            Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
-                        </p>
-                        <p>
-                            Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.
-                        </p>
-                        <p>
-                            Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
-                        </p>
-                        <p>
-                            Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
-                        </p>
-                    </div>
 
-                    <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                        <h4>But lots of work still to do</h4>
-                        <p>
-                            Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.
-                        </p>
-                        <p>
-                            Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
-                        </p>
-                        <p>
-                            Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
-                        </p>
-                        <p>
-                            Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
-                        </p>
-                        <p>
-                            Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
-                        </p>
                     </div>
                 </div>
             </main>
