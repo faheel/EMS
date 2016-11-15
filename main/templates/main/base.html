@@ -7,7 +7,7 @@
         <meta name="description" content="Examination Management System">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-        <title>EMS</title>
+        <title>{{ page_title }} - EMS</title>
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="{% static 'fonts/material-icons.css' %}">
         <link rel="stylesheet" href="{% static 'css/material.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
     </head>
 
     <body>
@@ -37,7 +38,7 @@
             <header class="header mdl-layout__header mdl-color--blue-grey-100 mdl-color-text--blue-grey-900">
                 <div class="mdl-layout__header-row">
                 <!-- Page title -->
-                    <span class="mdl-layout-title">EMS</span>
+                    <span class="mdl-layout-title">{{ page_title }}</span>
                 <!-- /Page title -->
 
                     <div class="mdl-layout-spacer"></div>
@@ -62,27 +63,52 @@
             <!-- Drawer header -->
                 <header class="drawer-header">
                 <!-- User avatar -->
+                {% if request.user.is_authenticated %}
                     <img src="{% static 'images/user.png' %}" class="avatar">
+                {% endif %}
                 <!-- /User avatar -->
 
                 <!-- User actions -->
                     <div class="avatar-dropdown">
                     <!-- User name -->
-                        <span>Admin-02</span>
+                    {% if request.user.is_authenticated %}
+                        <span>{{ request.user.first_name }}</span>
+                    {% else %}
+                        <div class="mdl-layout-spacer"></div>
+
+                        <span>
+                            <button id="login" class="mdl-button mdl-js-button mdl-js-ripple-effect \
+                                mdl-button--raised mdl-button--colored">
+                                Login
+                            </button>
+                            <script>
+                                document.getElementById("login").onclick = function () {
+                                    location.href = "/login";
+                                };
+                            </script>
+                        </span>
+                    {% endif %}
                     <!-- /User name -->
 
                         <div class="mdl-layout-spacer"></div>
 
                     <!-- Action menu -->
+                    {% if request.user.is_authenticated %}
                         <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <i class="material-icons" role="presentation">arrow_drop_down</i>
                         </button>
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                            <li class="mdl-menu__item">
+                            <li id="logout" class="mdl-menu__item">
                                 <i class="material-icons">reply</i>
-                                Sign out
+                                Log out
                             </li>
+                            <script>
+                                document.getElementById("logout").onclick = function () {
+                                    location.href = "/logout";
+                                };
+                            </script>
                         </ul>
+                    {% endif %}
                     <!-- /Action menu -->
                     </div>
                 <!-- /User actions -->
@@ -91,27 +117,29 @@
 
             <!-- Drawer navigation -->
                 <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
-                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
+                {% if request.user.is_authenticated %}
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/details">
                         <i class="mdl-color-text--accent material-icons" role="presentation">people</i>
                         Details
                     </a>
+                {% endif %}
 
-                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/attendance">
                         <i class="mdl-color-text--accent material-icons" role="presentation">assignment_turned_in</i>
                         Attendance
                     </a>
 
-                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/results">
                         <i class="mdl-color-text--accent material-icons" role="presentation">equalizer</i>
-                        Result
+                        Results
                     </a>
 
-                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/schedule">
                         <i class="mdl-color-text--accent material-icons" role="presentation">date_range</i>
                         Schedule
                     </a>
 
-                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="">
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/notifications">
                         <i class="mdl-color-text--accent material-icons" role="presentation">comment</i>
                         Notifications
                     </a>
@@ -123,9 +151,8 @@
         <!-- Page content -->
             <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid content">
-                    <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-
-                    </div>
+                {% block content %}
+                {% endblock %}
                 </div>
             </main>
         <!-- /Page content -->
@@ -133,6 +160,7 @@
 
     <!-- Scripts -->
         <script src="{% static 'js/material.min.js' %}"></script>
+        <script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
     <!-- /Scripts -->
     </body>
 </html>

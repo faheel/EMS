@@ -3,20 +3,16 @@ from .models import *
 
 
 main_models = [
-    admins,
-    department,
-    hod,
-    teacher,
-    subject,
-    subject_section,
-    teacher_subject,
-    student,
-    student_section,
-    class_attendance,
-    exam_attendance,
-    exam_schedule,
-    paper_coding,
-    marks,
+    Department,
+    Teacher,
+    Student,
+    StudentSection,
+    Subject,
+    SubjectSection,
+    Teaches,
+    ClassAttendance,
+    Marks,
+    Schedule,
 ]
 
 admin.site.register(main_models)

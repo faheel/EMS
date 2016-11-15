@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h5>View and update details of faculty members and students</h5>
+    <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+        <div>
+            <p>Select category</p>
+            <div class="radio-group">
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                    <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
+                    <span class="mdl-radio__label">Students</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2" style="margin-left:32px">
+                    <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
+                    <span class="mdl-radio__label">Faculty members</span>
+                </label>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised \
+                mdl-button--colored">Submit</button>
+        </div>
+    </div>
+{% endblock %}

@@ -37,9 +37,14 @@
         <!-- Page header -->
             <header class="header mdl-layout__header mdl-color--blue-grey-100 mdl-color-text--blue-grey-900">
                 <div class="mdl-layout__header-row">
+                    <!-- Page title -->
+                        <span class="mdl-layout-title">EMS</span>
+                    <!-- /Page title -->
+
                     <div class="mdl-layout-spacer"></div>
+
                     <button class="mdl-button mdl-js-button mdl-js--ripple-effect" onclick="window.history.back();">
-                        Cancel
+                        Back
                     </button>
                 </div>
             </header>
@@ -53,23 +58,37 @@
                 			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
                 				<h2 class="mdl-card__title-text">Login</h2>
                 			</div>
+
+                            {% if login_error %}
+                                <p class="mdl-color-text--red-500 login-error">Invalid username or password</p>
+                            {% endif %}
+
                 	  	    <div class="mdl-card__supporting-text">
                                 <div class="login-avatar">
                                     <i class="material-icons mdl-color-text--blue-grey-300">account_circle</i>
                                 </div>
-                				<form action="#">
+
+                				<form id="login-form" action="" method="POST">
+                                    {% csrf_token %}
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                						<input class="mdl-textfield__input" type="text" id="username">
-                						<label class="mdl-textfield__label" for="username">Username</label>
+                                        <input type="text"
+                                            name="{{ login_form.username.name }}"
+                                            id="id_{{ login_form.username.name }}"
+                                            class="mdl-textfield__input"
+                                            value="{% if login_form.username.value %}{{ login_form.username.value }}{% endif %}">
+                						<label class="mdl-textfield__label" for="id_{{ login_form.username.name }}">Username</label>
                 					</div>
                 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                						<input class="mdl-textfield__input" type="password" id="password">
-                						<label class="mdl-textfield__label" for="password">Password</label>
+                						<input type="password"
+                                            name="{{ login_form.password.name }}"
+                                            id="id_{{ login_form.password.name }}"
+                                            class="mdl-textfield__input">
+                						<label class="mdl-textfield__label" for="id_{{ login_form.password.name }}">Password</label>
                 					</div>
                 				</form>
                 			</div>
                 			<div class="mdl-card__actions mdl-card--border">
-                				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Log in</button>
+                				<button type="submit" form="login-form" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Log in</button>
                 			</div>
                 		</div>
                     </div>

@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h5>View
+        {% if request.user.is_authenticated %}
+            and update
+        {% endif %}
+        schedules for upcoming examinations
+    </h5>
+    <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+
+    </div>
+{% endblock %}

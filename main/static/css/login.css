@@ -16,3 +16,7 @@
 .mdl-textfield__input {
     color: #455A64;
 }
+.login-error {
+	margin: 16px auto;
+	text-align: center;
+}

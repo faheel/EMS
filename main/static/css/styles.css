@@ -8,6 +8,10 @@ html, body {
     background: rgba(103, 58, 183, 0.25);
 }
 
+.radio-group {
+    margin: 24px auto;
+}
+
 .avatar {
   width: 48px;
   height: 48px;
