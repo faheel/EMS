@@ -12,9 +12,12 @@ class Teacher(models.Model):
 	teacher_id = models.CharField(max_length=16, primary_key=True)
 	name = models.CharField(max_length=64)
 	dept_id = models.ForeignKey(Department)
+	salary = models.FloatField()
+	teaching_since = models.DateField()
 
 class Student(models.Model):
 	student_id = models.CharField(max_length=16, primary_key=True)
+	roll_no = models.CharField(max_length=16)
 	name = models.CharField(max_length=64)
 	dob = models.DateField()
 	semester = models.IntegerField()
