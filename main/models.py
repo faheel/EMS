@@ -24,7 +24,7 @@ class Student(models.Model):
 	dept_id = models.ForeignKey(Department)
 
 class StudentSection(models.Model):
-	student = models.OneToOneField(Student, on_delete=models.CASCADE)
+	student_id = models.OneToOneField(Student, on_delete=models.CASCADE)
 	section = models.CharField(max_length=1)
 
 class Subject(models.Model):
@@ -33,9 +33,11 @@ class Subject(models.Model):
 	semester = models.IntegerField()
 	dept_id = models.ForeignKey(Department)
 
-class SubjectSection(models.Model):		# weak relation
+class SubjectSection(models.Model):
 	subject_id = models.ForeignKey(Subject)
 	section = models.CharField(max_length=1)
+	class Meta:
+		unique_together = ('subject_id', 'section')
 
 class Teaches(models.Model):
 	teacher_id = models.ForeignKey(Teacher)
