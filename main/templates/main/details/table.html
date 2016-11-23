@@ -1,0 +1,97 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div style="margin: 12px auto 0 auto">
+        {% if students is not None %}
+            <h5>
+                Department of {{ dept_name }} - Semester {{ semester }}
+            </h5>
+            {% if request.user.is_authenticated %}
+                <button onclick="location.href = '/profile/student/add/'" style="z-index: 2; margin-left: -28px; margin-top: -20px; float: right" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                    <i class="material-icons">add</i>
+                </button>
+            {% endif %}
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-top: 24px">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Student ID</th>
+                        <th class="mdl-data-table__cell--non-numeric">Roll no</th>
+                        <th class="mdl-data-table__cell--non-numeric">Name</th>
+                        <th class="mdl-data-table__cell--non-numeric">Date of birth</th>
+                        {% if request.user.is_authenticated %}
+                            <th class="mdl-data-table__cell--non-numeric"></th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{ student.student_id }}
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{ student.roll_no }}
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{ student.name }}
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{ student.dob }}
+                            </td>
+                            {% if request.user.is_authenticated %}
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <button onclick="location.href = '/profile/student/{{ student.student_id }}';" class="mdl-button mdl-js-button mdl-button--colored">Edit</button>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% elif teachers is not None %}
+            <h5>
+                Department of {{ dept_name }}
+            </h5>
+            {% if request.user.is_authenticated %}
+                <button onclick="location.href = '/profile/teacher/add/'" style="z-index: 2; margin-left: -28px; margin-top: -20px; float: right" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                    <i class="material-icons">add</i>
+                </button>
+            {% endif %}
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-top: 24px">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">ID</th>
+                        <th class="mdl-data-table__cell--non-numeric">Name</th>
+                        <th class="mdl-data-table__cell--non-numeric">Post</th>
+                        <th class="mdl-data-table__cell--non-numeric">Teaching since</th>
+                        {% if request.user.is_authenticated %}
+                            <th class="mdl-data-table__cell--non-numeric"></th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for teacher in teachers %}
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{ teacher.teacher_id }}
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{ teacher.name }}
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{ teacher.post }}
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{ teacher.teaching_since }}
+                            </td>
+                            {% if request.user.is_authenticated %}
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <button onclick="location.href = '/profile/teacher/{{ teacher.teacher_id }}';" class="mdl-button mdl-js-button mdl-button--colored">Edit</button>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

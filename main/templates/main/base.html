@@ -43,7 +43,7 @@
 
                     <div class="mdl-layout-spacer"></div>
 
-                <!-- Search bar -->
+                <!-- Search bar --
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                         <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
                             <i class="material-icons">search</i>
@@ -117,12 +117,10 @@
 
             <!-- Drawer navigation -->
                 <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
-                {% if request.user.is_authenticated %}
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/details">
                         <i class="mdl-color-text--accent material-icons" role="presentation">people</i>
                         Details
                     </a>
-                {% endif %}
 
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/attendance">
                         <i class="mdl-color-text--accent material-icons" role="presentation">assignment_turned_in</i>
