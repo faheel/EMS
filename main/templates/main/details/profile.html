@@ -2,112 +2,133 @@
 
 {% block content %}
     {% if profile is not None %}
-        <div class="mdl-card mdl-shadow--2dp" style="margin: 24px auto 0 auto">
-            <div class="mdl-card__title mdl-color--primary">
-                <h2 class="mdl-card__title-text mdl-color-text--white">
-                    {{ profile.name }}
-                </h2>
-            </div>
+        <div  style="margin: 24px auto 0 auto">
             {% if profile_type == 'student' %}
-                <div class="mdl-card__supporting-text">
-                    <form id="profile-form" action="" method="POST">
-                        {% csrf_token %}
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input type="text"
-                                name="student_id"
-                                id="student_id"
-                                class="mdl-textfield__input"
-                                value="{{ profile.student_id }}" readonly>
-                            <label class="mdl-textfield__label" for="student_id">Student ID</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input type="text"
-                                name="roll_no"
-                                id="roll_no"
-                                class="mdl-textfield__input"
-                                value="{{ profile.roll_no }}">
-                            <label class="mdl-textfield__label" for="roll_no">Roll no</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input type="text"
-                                name="name"
-                                id="name"
-                                class="mdl-textfield__input"
-                                value="{{ profile.name }}">
-                            <label class="mdl-textfield__label" for="name">Name</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" pattern="[1-8]" id="semester" name="semester" value="{{ profile.semester }}">
-                            <label class="mdl-textfield__label" for="semester">Semester</label>
-                            <span class="mdl-textfield__error">Semester should be a number from 1-8</span>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-                            <input class="mdl-textfield__input" type="text" id="dept_name" name="dept_name" value="{{ dept_name }}" readonly tabIndex="-1">
-                            <label for="dept_name">
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            </label>
-                            <label for="dept_name" class="mdl-textfield__label">Department</label>
-                            <ul for="dept_name" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                {% for dept in departments %}
-                                    <li class="mdl-menu__item" data-val="{{ dept.dept_id }}">{{ dept.name }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </form>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <button type="submit" form="profile-form" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Update</button>
-                </div>
+                <form id="delete-form" action="/profile/delete/student/" method="POST" style="display: none">
+                    {% csrf_token %}
+                    <input type="text" name="student_id" value="{{ profile.student_id }}">
+                    <input type="text" name="dept_name" value="{{ dept_name }}">
+                    <input type="text" name="semester" value="{{ profile.semester }}">
+                </form>
             {% elif profile_type == 'teacher' %}
-                <div class="mdl-card__supporting-text">
-                    <form id="profile-form" action="" method="POST">
-                        {% csrf_token %}
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input type="text"
-                                name="teacher_id"
-                                id="teacher_id"
-                                class="mdl-textfield__input"
-                                value="{{ profile.teacher_id }}" readonly>
-                            <label class="mdl-textfield__label" for="teacher_id">Teacher ID</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input type="text"
-                                name="name"
-                                id="name"
-                                class="mdl-textfield__input"
-                                value="{{ profile.name }}">
-                            <label class="mdl-textfield__label" for="name">Name</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input type="text"
-                                name="post"
-                                id="post"
-                                class="mdl-textfield__input"
-                                value="{{ profile.post }}">
-                            <label class="mdl-textfield__label" for="name">Post</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="salary" name="salary" value="{{ profile.salary }}">
-                            <label class="mdl-textfield__label" for="salary">Salary</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-                            <input class="mdl-textfield__input" type="text" id="dept_name" name="dept_name" value="{{ dept_name }}" readonly tabIndex="-1">
-                            <label for="dept_name">
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            </label>
-                            <label for="dept_name" class="mdl-textfield__label">Department</label>
-                            <ul for="dept_name" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                {% for dept in departments %}
-                                    <li class="mdl-menu__item" data-val="{{ dept.dept_id }}">{{ dept.name }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </form>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <button type="submit" form="profile-form" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Update</button>
-                </div>
+                <form id="delete-form" action="/profile/delete/teacher/" method="POST" style="display: none">
+                    {% csrf_token %}
+                    <input type="text" name="teacher_id" value="{{ profile.teacher_id }}">
+                    <input type="text" name="dept_name" value="{{ dept_name }}">
+                </form>
             {% endif %}
+            <button type="submit" form="delete-form"
+                style="z-index: 2; margin-left: -28px; margin-top: 28px; float: right"
+                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                    <i class="material-icons">delete</i>
+            </button>
+            <div class="mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-color--primary">
+                    <h2 class="mdl-card__title-text mdl-color-text--white">
+                        {{ profile.name }}
+                    </h2>
+                </div>
+                {% if profile_type == 'student' %}
+                    <div class="mdl-card__supporting-text">
+                        <form id="profile-form" action="" method="POST">
+                            {% csrf_token %}
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input type="text"
+                                    name="student_id"
+                                    id="student_id"
+                                    class="mdl-textfield__input"
+                                    value="{{ profile.student_id }}" readonly>
+                                <label class="mdl-textfield__label" for="student_id">Student ID</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input type="text"
+                                    name="roll_no"
+                                    id="roll_no"
+                                    class="mdl-textfield__input"
+                                    value="{{ profile.roll_no }}">
+                                <label class="mdl-textfield__label" for="roll_no">Roll no</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input type="text"
+                                    name="name"
+                                    id="name"
+                                    class="mdl-textfield__input"
+                                    value="{{ profile.name }}">
+                                <label class="mdl-textfield__label" for="name">Name</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" pattern="[1-8]" id="semester" name="semester" value="{{ profile.semester }}">
+                                <label class="mdl-textfield__label" for="semester">Semester</label>
+                                <span class="mdl-textfield__error">Semester should be a number from 1-8</span>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                                <input class="mdl-textfield__input" type="text" id="dept_name" name="dept_name" value="{{ dept_name }}" readonly tabIndex="-1">
+                                <label for="dept_name">
+                                    <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                                </label>
+                                <label for="dept_name" class="mdl-textfield__label">Department</label>
+                                <ul for="dept_name" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                    {% for dept in departments %}
+                                        <li class="mdl-menu__item" data-val="{{ dept.dept_id }}">{{ dept.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button type="submit" form="profile-form" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Update</button>
+                    </div>
+                {% elif profile_type == 'teacher' %}
+                    <div class="mdl-card__supporting-text">
+                        <form id="profile-form" action="" method="POST">
+                            {% csrf_token %}
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input type="text"
+                                    name="teacher_id"
+                                    id="teacher_id"
+                                    class="mdl-textfield__input"
+                                    value="{{ profile.teacher_id }}" readonly>
+                                <label class="mdl-textfield__label" for="teacher_id">Teacher ID</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input type="text"
+                                    name="name"
+                                    id="name"
+                                    class="mdl-textfield__input"
+                                    value="{{ profile.name }}">
+                                <label class="mdl-textfield__label" for="name">Name</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input type="text"
+                                    name="post"
+                                    id="post"
+                                    class="mdl-textfield__input"
+                                    value="{{ profile.post }}">
+                                <label class="mdl-textfield__label" for="name">Post</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="salary" name="salary" value="{{ profile.salary }}">
+                                <label class="mdl-textfield__label" for="salary">Salary</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                                <input class="mdl-textfield__input" type="text" id="dept_name" name="dept_name" value="{{ dept_name }}" readonly tabIndex="-1">
+                                <label for="dept_name">
+                                    <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                                </label>
+                                <label for="dept_name" class="mdl-textfield__label">Department</label>
+                                <ul for="dept_name" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                    {% for dept in departments %}
+                                        <li class="mdl-menu__item" data-val="{{ dept.dept_id }}">{{ dept.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button type="submit" form="profile-form" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Update</button>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     {% elif action is not None %}
         <div class="mdl-card mdl-shadow--2dp" style="margin: 24px auto 0 auto">

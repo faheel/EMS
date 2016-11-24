@@ -151,7 +151,7 @@ def profile_student(request, student_id):
             dept_name = cursor.fetchone()
             cursor.execute("SELECT * FROM main_department")
             departments = dictfetchall(cursor)
-        return render(request, 'main/details/profile.html',
+        return render(request, 'main/details/view_profile.html',
             {
                 'page_title': 'Student Profile',
                 'profile': student,
@@ -185,7 +185,11 @@ def profile_teacher(request, teacher_id):
             dept_name = cursor.fetchone()
             cursor.execute("SELECT * FROM main_department")
             departments = dictfetchall(cursor)
-        return render(request, 'main/details/profile.html',
+            if request.user.is_authenticated():
+                url = 'main/details/profile.html'
+            else:
+                url = 'main/details/view_profile.html'
+        return render(request, url,
             {
                 'page_title': 'Teacher Profile',
                 'profile': teacher,
@@ -256,6 +260,45 @@ def add_teacher(request):
                 'action': 'add_teacher',
                 'departments': departments,
             })
+
+@login_required
+def delete_student(request):
+    if request.method == 'POST':
+        student_id = request.POST['student_id']
+        semester = request.POST['semester']
+        dept_name = request.POST['dept_name']
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM main_student WHERE student_id = %s", [student_id])
+            cursor.execute("SELECT * FROM main_student WHERE semester = %s AND dept_id = (SELECT dept_id FROM main_department WHERE name = %s)", [semester, dept_name])
+            students = dictfetchall(cursor)
+        return render(request, 'main/details/table.html',
+            {
+                'page_title': 'Student details',
+                'students': students,
+                'dept_name': dept_name,
+                'semester': semester,
+            })
+    else:
+        return HttpResponseRedirect('/details/')
+
+@login_required
+def delete_teacher(request):
+    if request.method == 'POST':
+        teacher_id = request.POST['teacher_id']
+        dept_name = request.POST['dept_name']
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM main_teaches WHERE teacher_id = %s", [teacher_id])
+            cursor.execute("DELETE FROM main_teacher WHERE teacher_id = %s", [teacher_id])
+            cursor.execute("SELECT * FROM main_teacher WHERE dept_id = (SELECT dept_id FROM main_department WHERE name = %s)", [dept_name])
+            teachers = dictfetchall(cursor)
+        return render(request, 'main/details/table.html',
+            {
+                'page_title': 'Teacher details',
+                'teachers': teachers,
+                'dept_name': dept_name,
+            })
+    else:
+        return HttpResponseRedirect('/details/')
 
 # Attendance --------------------------------------------------------------------------------------
 def attendance(request):

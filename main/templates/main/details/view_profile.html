@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    {% if profile is not None %}
+        <div style="margin: 24px auto 0 auto">
+            <div class="mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-color--primary">
+                    <h2 class="mdl-card__title-text mdl-color-text--white">
+                        {{ profile.name }}
+                    </h2>
+                </div>
+                {% if profile_type == 'student' %}
+                    <div class="mdl-card__supporting-text">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input type="text"
+                                name="student_id"
+                                id="student_id"
+                                class="mdl-textfield__input"
+                                value="{{ profile.student_id }}" readonly>
+                            <label class="mdl-textfield__label" for="student_id">Student ID</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input type="text"
+                                name="roll_no"
+                                id="roll_no"
+                                class="mdl-textfield__input"
+                                value="{{ profile.roll_no }}" readonly>
+                            <label class="mdl-textfield__label" for="roll_no">Roll no</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input type="text"
+                                name="name"
+                                id="name"
+                                class="mdl-textfield__input"
+                                value="{{ profile.name }}" readonly>
+                            <label class="mdl-textfield__label" for="name">Name</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="[1-8]" id="semester" name="semester" value="{{ profile.semester }}" readonly>
+                            <label class="mdl-textfield__label" for="semester">Semester</label>
+                            <span class="mdl-textfield__error">Semester should be a number from 1-8</span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                            <input type="text"
+                                name="dept_name"
+                                id="dept_name"
+                                class="mdl-textfield__input"
+                                value="{{ dept_name }}" readonly>
+                            <label class="mdl-textfield__label" for="dept_name">Department</label>
+                        </div>
+                    </div>
+                {% elif profile_type == 'teacher' %}
+                    <div class="mdl-card__supporting-text">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input type="text"
+                                name="teacher_id"
+                                id="teacher_id"
+                                class="mdl-textfield__input"
+                                value="{{ profile.teacher_id }}" readonly>
+                            <label class="mdl-textfield__label" for="teacher_id">Teacher ID</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input type="text"
+                                name="name"
+                                id="name"
+                                class="mdl-textfield__input"
+                                value="{{ profile.name }}" readonly>
+                            <label class="mdl-textfield__label" for="name">Name</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input type="text"
+                                name="post"
+                                id="post"
+                                class="mdl-textfield__input"
+                                value="{{ profile.post }}" readonly>
+                            <label class="mdl-textfield__label" for="name">Post</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="salary" name="salary" value="{{ profile.salary }}" readonly>
+                            <label class="mdl-textfield__label" for="salary">Salary</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                            <input type="text"
+                                name="dept_name"
+                                id="dept_name"
+                                class="mdl-textfield__input"
+                                value="{{ dept_name }}" readonly>
+                            <label class="mdl-textfield__label" for="dept_name">Department</label>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

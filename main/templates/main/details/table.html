@@ -18,9 +18,7 @@
                         <th class="mdl-data-table__cell--non-numeric">Roll no</th>
                         <th class="mdl-data-table__cell--non-numeric">Name</th>
                         <th class="mdl-data-table__cell--non-numeric">Date of birth</th>
-                        {% if request.user.is_authenticated %}
-                            <th class="mdl-data-table__cell--non-numeric"></th>
-                        {% endif %}
+                        <th class="mdl-data-table__cell--non-numeric"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,11 +36,13 @@
                             <td class="mdl-data-table__cell--non-numeric">
                                 {{ student.dob }}
                             </td>
-                            {% if request.user.is_authenticated %}
-                                <td class="mdl-data-table__cell--non-numeric">
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {% if request.user.is_authenticated %}
                                     <button onclick="location.href = '/profile/student/{{ student.student_id }}';" class="mdl-button mdl-js-button mdl-button--colored">Edit</button>
-                                </td>
-                            {% endif %}
+                                {% else %}
+                                    <button onclick="location.href = '/profile/student/{{ student.student_id }}';" class="mdl-button mdl-js-button mdl-button--colored">View</button>
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -63,9 +63,7 @@
                         <th class="mdl-data-table__cell--non-numeric">Name</th>
                         <th class="mdl-data-table__cell--non-numeric">Post</th>
                         <th class="mdl-data-table__cell--non-numeric">Teaching since</th>
-                        {% if request.user.is_authenticated %}
-                            <th class="mdl-data-table__cell--non-numeric"></th>
-                        {% endif %}
+                        <th class="mdl-data-table__cell--non-numeric"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,11 +81,13 @@
                             <td class="mdl-data-table__cell--non-numeric">
                                 {{ teacher.teaching_since }}
                             </td>
-                            {% if request.user.is_authenticated %}
-                                <td class="mdl-data-table__cell--non-numeric">
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {% if request.user.is_authenticated %}
                                     <button onclick="location.href = '/profile/teacher/{{ teacher.teacher_id }}';" class="mdl-button mdl-js-button mdl-button--colored">Edit</button>
-                                </td>
-                            {% endif %}
+                                {% else %}
+                                    <button onclick="location.href = '/profile/teacher/{{ teacher.teacher_id }}';" class="mdl-button mdl-js-button mdl-button--colored">View</button>
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
