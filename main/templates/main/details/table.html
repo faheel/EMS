@@ -7,7 +7,7 @@
                 Department of {{ dept_name }} - Semester {{ semester }}
             </h5>
             {% if request.user.is_authenticated %}
-                <button onclick="location.href = '/profile/student/add/'" style="z-index: 2; margin-left: -28px; margin-top: -20px; float: right" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <button onclick="location.href = '/profile/student/add/'" style="z-index: 2; margin-left: -28px; margin-top: 28px; float: right" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                     <i class="material-icons">add</i>
                 </button>
             {% endif %}
@@ -52,7 +52,7 @@
                 Department of {{ dept_name }}
             </h5>
             {% if request.user.is_authenticated %}
-                <button onclick="location.href = '/profile/teacher/add/'" style="z-index: 2; margin-left: -28px; margin-top: -20px; float: right" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <button onclick="location.href = '/profile/teacher/add/'" style="z-index: 2; margin-left: -28px; margin-top: 28px; float: right" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                     <i class="material-icons">add</i>
                 </button>
             {% endif %}

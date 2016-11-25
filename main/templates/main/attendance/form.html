@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h5>View
+        {% if request.user.is_authenticated %}
+            and update
+        {% endif %}
+        students' class attendance
+    </h5>
+    <div class="mdl-cell mdl-cell--12-col mdl-grid">
+        <div>
+            <p>Select department and semester</p>
+            <form id="dept-sem-form" action="list/" method="POST">
+                {% csrf_token %}
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                    <input class="mdl-textfield__input" type="text" id="dept_name" name="dept_name" readonly tabIndex="-1">
+                    <label for="dept_name">
+                        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                    </label>
+                    <label for="dept_name" class="mdl-textfield__label">Department</label>
+                    <ul for="dept_name" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        {% for dept in departments %}
+                            <li class="mdl-menu__item" data-val="{{ dept.dept_id }}">{{ dept.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <br />
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                    <input class="mdl-textfield__input" type="text" id="semester" name="semester" value="" readonly tabIndex="-1">
+                    <label for="semester">
+                        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                    </label>
+                    <label for="semester" class="mdl-textfield__label">Semester</label>
+                    <ul for="semester" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        {% for sem in semesters %}
+                            <li class="mdl-menu__item" data-val="{{ sem }}">{{ sem }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </form>
+            <button type="submit" form="dept-sem-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Submit</button>
+        </div>
+    </div>
+{% endblock %}

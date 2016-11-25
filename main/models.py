@@ -86,7 +86,7 @@ class ClassAttendance(models.Model):
 		unique_together = ('student_id', 'subject_id')
 
 	def __str__(self):
-		return '{} {}'.format(self.student_id, self.attendance)
+		return '{} - {}'.format(self.student_id, self.subject_id)
 
 
 class Marks(models.Model):

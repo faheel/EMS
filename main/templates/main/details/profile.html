@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if profile is not None %}
-        <div  style="margin: 24px auto 0 auto">
+        <div style="margin: 24px auto 0 auto">
             {% if profile_type == 'student' %}
                 <form id="delete-form" action="/profile/delete/student/" method="POST" style="display: none">
                     {% csrf_token %}
