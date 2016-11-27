@@ -22,7 +22,13 @@
                 <form id="student-details-form" action="students/" method="POST">
                     {% csrf_token %}
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-                        <input class="mdl-textfield__input" type="text" id="dept_name" name="dept_name" readonly tabIndex="-1">
+                        <input
+                            class="mdl-textfield__input"
+                            type="text"
+                            id="dept_name"
+                            name="dept_name"
+                            tabIndex="-1"
+                            readonly>
                         <label for="dept_name">
                             <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                         </label>
@@ -35,7 +41,13 @@
                     </div>
                     <br />
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-                        <input class="mdl-textfield__input" type="text" id="semester" name="semester" value="" readonly tabIndex="-1">
+                        <input
+                            class="mdl-textfield__input"
+                            type="text"
+                            id="semester"
+                            name="semester"
+                            tabIndex="-1"
+                            readonly>
                         <label for="semester">
                             <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                         </label>
@@ -47,13 +59,24 @@
                         </ul>
                     </div>
                 </form>
-                <button type="submit" form="student-details-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Submit</button>
+                <button
+                    type="submit"
+                    form="student-details-form"
+                    class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+                        Submit
+                </button>
             {% elif form_type == 'teacher' %}
                 <p>Select department</p>
                 <form id="teacher-details-form" action="teachers/" method="POST">
                     {% csrf_token %}
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-                        <input class="mdl-textfield__input" type="text" id="dept_name" name="dept_name" readonly tabIndex="-1">
+                        <input
+                            class="mdl-textfield__input"
+                            type="text"
+                            id="dept_name"
+                            name="dept_name"
+                            tabIndex="-1"
+                            readonly>
                         <label for="dept_name">
                             <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                         </label>
@@ -65,23 +88,43 @@
                         </ul>
                     </div>
                 </form>
-                <button type="submit" form="teacher-details-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Submit</button>
+                <button
+                    type="submit"
+                    form="teacher-details-form"
+                    class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+                        Submit
+                </button>
             {% else %}
                 <p>Select category</p>
                 <form id="student-teacher-choice" action="" method="POST">
                     {% csrf_token %}
                     <div class="radio-group">
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                            <input type="radio" id="option-1" class="mdl-radio__button" name="form_type" value="student">
+                            <input
+                                type="radio"
+                                id="option-1"
+                                class="mdl-radio__button"
+                                name="form_type"
+                                value="student">
                             <span class="mdl-radio__label">Students</span>
                         </label>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2" style="margin-left:32px">
-                            <input type="radio" id="option-2" class="mdl-radio__button" name="form_type" value="teacher">
+                            <input
+                                type="radio"
+                                id="option-2"
+                                class="mdl-radio__button"
+                                name="form_type"
+                                value="teacher">
                             <span class="mdl-radio__label">Teachers</span>
                         </label>
                     </div>
                 </form>
-                <button type="submit" form="student-teacher-choice" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Submit</button>
+                <button
+                    type="submit"
+                    form="student-teacher-choice"
+                    class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+                        Submit
+                </button>
             {% endif %}
         </div>
     </div>

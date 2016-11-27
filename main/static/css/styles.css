@@ -12,6 +12,21 @@ html, body {
     margin: 24px auto;
 }
 
+.content-container {
+    margin: 12px auto;
+}
+
+.table-container {
+    margin-top: 24px;
+}
+
+.fab {
+    z-index: 2;
+    margin-left: -28px;
+    margin-top: 20px;
+    float: right;
+}
+
 .avatar {
   width: 48px;
   height: 48px;

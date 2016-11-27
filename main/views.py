@@ -132,8 +132,9 @@ def profile_student(request, student_id):
 		name = request.POST['name']
 		semester = request.POST['semester']
 		dept_name = request.POST['dept_name']
+		dob = request.POST['dob']
 		with connection.cursor() as cursor:
-			cursor.execute("UPDATE main_student SET roll_no = %s, name = %s, semester = %s, dept_id = (SELECT dept_id from main_department WHERE name = %s) WHERE student_id = %s;", [roll_no, name, semester, dept_name, student_id])
+			cursor.execute("UPDATE main_student SET roll_no = %s, name = %s, dob = %s, semester = %s, dept_id = (SELECT dept_id from main_department WHERE name = %s) WHERE student_id = %s;", [roll_no, name, dob, semester, dept_name, student_id])
 			cursor.execute("SELECT * FROM main_student WHERE semester = %s AND dept_id = (SELECT dept_id FROM main_department WHERE name = %s)", [semester, dept_name])
 			students = dictfetchall(cursor)
 		return render(request, 'main/details/table.html',
@@ -171,8 +172,9 @@ def profile_teacher(request, teacher_id):
 		post = request.POST['post']
 		salary = request.POST['salary']
 		dept_name = request.POST['dept_name']
+		teaching_since = request.POST['teaching_since']
 		with connection.cursor() as cursor:
-			cursor.execute("UPDATE main_teacher SET name = %s, dept_id = (SELECT dept_id from main_department WHERE name = %s), post = %s, salary = %s WHERE teacher_id = %s;", [name, dept_name, post, salary, teacher_id])
+			cursor.execute("UPDATE main_teacher SET name = %s, dept_id = (SELECT dept_id from main_department WHERE name = %s), post = %s, teaching_since = %s, salary = %s WHERE teacher_id = %s;", [name, dept_name, post, teaching_since, salary, teacher_id])
 			cursor.execute("SELECT * FROM main_teacher WHERE dept_id = (SELECT dept_id FROM main_department WHERE name = %s)", [dept_name])
 			teachers = dictfetchall(cursor)
 		return render(request, 'main/details/table.html',
@@ -381,8 +383,6 @@ def results_list(request):
 				cursor.execute("SELECT student_id, AVG(marks) AS 'avg' FROM main_marks WHERE student_id = %s GROUP BY student_id", [student['student_id']])
 				avg = dictfetchall(cursor)
 				avg_list += avg
-
-		print(avg_list)
 
 		return render(request, 'main/results/table.html',
 			{

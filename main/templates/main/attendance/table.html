@@ -1,45 +1,47 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div style="margin: 12px auto 0 auto">
+    <div class="content-container">
         {% if students is not None %}
             <h5>
                 Department of {{ dept_name }} - Semester {{ semester }}
             </h5>
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-top: 24px">
-                <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric">Roll no</th>
-                        <th class="mdl-data-table__cell--non-numeric">Name</th>
-                        {% for subject_name in subject_names %}
-                            <th class="mdl-data-table__cell">{{ subject_name.name }}</th>
-                        {% endfor %}
-                        <th class="mdl-data-table__cell">Average</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for student in students %}
+            <div class="table-container">
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                    <thead>
                         <tr>
-                            <td class="mdl-data-table__cell--non-numeric">
-                                {{ student.roll_no }}
-                            </td>
-                            <td class="mdl-data-table__cell--non-numeric">
-                                {{ student.name }}
-                            </td>
-                            {% for attendance in attendance_list %}
-                                {% if attendance.student_id == student.student_id %}
-                                    <td class="mdl-data-table__cell">{{ attendance.attendance }}</td>
-                                {% endif %}
+                            <th class="mdl-data-table__cell--non-numeric">Roll no</th>
+                            <th class="mdl-data-table__cell--non-numeric">Name</th>
+                            {% for subject_name in subject_names %}
+                                <th class="mdl-data-table__cell">{{ subject_name.name }}</th>
                             {% endfor %}
-                            {% for avg in avg_list %}
-                                {% if avg.student_id == student.student_id %}
-                                    <td class="mdl-data-table__cell">{{ avg.avg | floatformat:2 }}</td>
-                                {% endif %}
-                            {% endfor %}
+                            <th class="mdl-data-table__cell">Average</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    {{ student.roll_no }}
+                                </td>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    {{ student.name }}
+                                </td>
+                                {% for attendance in attendance_list %}
+                                    {% if attendance.student_id == student.student_id %}
+                                        <td class="mdl-data-table__cell">{{ attendance.attendance }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                                {% for avg in avg_list %}
+                                    {% if avg.student_id == student.student_id %}
+                                        <td class="mdl-data-table__cell">{{ avg.avg | floatformat:2 }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% endif %}
     </div>
 {% endblock %}
