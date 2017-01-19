@@ -1,4 +1,9 @@
-# Examination Management System <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
+# Examination Management System
+
+[![Heroku](https://img.shields.io/badge/Heroku-deployed-7e57c2.svg?style=flat-square)][app-link]
+[![Made with Django](https://www.djangoproject.com/m/img/badges/djangomade124x25.gif)](http://www.djangoproject.com)
+
+[![See it live][image-link]][app-link]
 
 ## Setup
 1. Clone the repo
@@ -64,3 +69,7 @@ First, make sure that the virtual environment we created, i.e. `ve`, is activate
 python3.5 manage.py runserver
 ```
 Once the development server has started, you may visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to check out the app.
+
+
+[app-link]: https://e-m-s.herokuapp.com/
+[image-link]: https://cloud.githubusercontent.com/assets/11466676/22126660/95d09678-debe-11e6-9e1b-009f1ca782ee.png
