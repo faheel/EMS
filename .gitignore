@@ -1,4 +1,10 @@
+# Cache files
 *.pyc
 *~
 __pycache__
+
+# Virtual environment
 ve
+
+# File containing sensitive information such as the SECRET_KEY, database credentials etc.
+secret_settings.py
