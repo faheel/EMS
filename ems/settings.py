@@ -4,7 +4,12 @@ Local Django settings for ems project
 
 import os
 import dj_database_url
+from . import secrets
 
+
+SECRET_KEY = secrets.SECRET_KEY
+
+DEBUG = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,8 +88,6 @@ DATABASES['default'] = dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
-
-DEBUG = False
 
 try:
     from .local_settings import *

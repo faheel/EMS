@@ -10,4 +10,4 @@ ve
 local_settings.py
 
 # File containing sensitive information such as the SECRET_KEY, database credentials etc.
-secrets.py
+# secrets.py
