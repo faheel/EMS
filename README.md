@@ -8,19 +8,19 @@
 ## Setup
 1. Clone the repo and `cd` into it
 
-2. Create virtual environment (Python 3.5)
+2. Create a Python 3 virtual environment
 
 	```
 	sudo apt install python3-dev python-virtualenv
 	```
 
 	```
-	virtualenv --python=/usr/bin/python3.5 ve
+	virtualenv --python=/usr/bin/python3 ve
 	```
 
 	`ve` is the name of the virtual environment
 
-3. Activate virtual environment
+3. Activate the virtual environment
 
 	```
 	source ve/bin/activate
@@ -62,12 +62,12 @@
 5. Apply migrations
 
 	```
-	python3.5 manage.py migrate
+	python3 manage.py migrate
  	```
 
 #### Create Django superuser
 ```
-python3.5 manage.py createsuperuser --username admin
+python3 manage.py createsuperuser --username admin
 ```
 
 **Setup is now complete!** :tada:
@@ -76,7 +76,7 @@ python3.5 manage.py createsuperuser --username admin
 First, make sure that the virtual environment we created, i.e. `ve`, is activated. Then run
 
 ```
-python3.5 manage.py runserver
+python3 manage.py runserver
 ```
 
 Once the development server has started, you may visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to check out the app.
