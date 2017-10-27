@@ -26,10 +26,10 @@
 	source ve/bin/activate
 	```
 
-4. Install Django latest version ➡️ Install the requirements
+4. Install the requirements
 
 	```
-	pip install django ➡️ pip install -r requirements.txt
+	pip install -r requirements.txt
 	```
 
 ### Create a PostgreSQL database
