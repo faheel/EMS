@@ -20,13 +20,13 @@
 
 	`ve` is the name of the virtual environment
 
-3. Activate the virtual environment
+3. Activate the virtual environment (Should always work in virtual Env.)
 
 	```
 	source ve/bin/activate
 	```
 
-4. Install Django
+4. Install Django latest version
 
 	```
 	pip install django
@@ -70,16 +70,16 @@
 python3 manage.py createsuperuser --username admin
 ```
 
-**Setup is now complete!** :tada:
+**Setup is now complete!** :tadaa:
 
-## Launch
-First, make sure that the virtual environment we created, i.e. `ve`, is activated. Then run
+## Launch 
+First, make sure that the virtual environment we created, i.e. `ve`, is now activated. Then run
 
 ```
 python3 manage.py runserver
 ```
 
-Once the development server has started, you may visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to check out the app.
+Once the development server has started, you may visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to check out the app.(Do check out).
 
 
 [app-link]: https://e-m-s.herokuapp.com/
