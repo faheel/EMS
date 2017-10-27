@@ -20,16 +20,16 @@
 
 	`ve` is the name of the virtual environment
 
-3. Activate the virtual environment (Should always work in virtual Env.)
+3. Activate the virtual environment
 
 	```
 	source ve/bin/activate
 	```
 
-4. Install Django latest version
+4. Install Django latest version ➡️ Install the requirements
 
 	```
-	pip install django
+	pip install django ➡️ pip install -r requirements.txt
 	```
 
 ### Create a PostgreSQL database
@@ -70,10 +70,10 @@
 python3 manage.py createsuperuser --username admin
 ```
 
-**Setup is now complete!** :tadaa:
+**Setup is now complete!** :tada:
 
-## Launch 
-First, make sure that the virtual environment we created, i.e. `ve`, is now activated. Then run
+## Launch
+First, make sure that the virtual environment we created, i.e. `ve`, is activated. Then run
 
 ```
 python3 manage.py runserver
