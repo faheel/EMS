@@ -79,7 +79,7 @@ First, make sure that the virtual environment we created, i.e. `ve`, is activate
 python3 manage.py runserver
 ```
 
-Once the development server has started, you may visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to check out the app.(Do check out).
+Once the development server has started, you may visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to check out the app.
 
 
 [app-link]: https://e-m-s.herokuapp.com/
